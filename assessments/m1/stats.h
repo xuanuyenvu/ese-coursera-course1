@@ -21,20 +21,59 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
+/**
+ * @brief A function that prints the statistics of 
+ * an array including minimum, maximum, mean, and median.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ */
+void print_statistics(unsigned char *array, unsigned int length);
 
 /**
- * @brief <Add Brief Description of Function Here>
- *
- * <Add Extended Description Here>
- *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- *
- * @return <Add Return Informaiton here>
+ * @brief A function that prints the elements of an array.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
  */
+void print_array(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that finds the median of an array.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ * @return The median value
+ */
+unsigned char find_median(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that finds the mean of an array.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ * @return The mean value
+ */
+unsigned char find_mean(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that finds the maximum of an array.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ * @return The maximum value
+ */
+unsigned char find_maximum(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that finds the minimum of an array.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ * @return The minimum value
+ */
+unsigned char find_minimum(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that sorts an array in ascending order.
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ */
+void sort_array(unsigned char *array, unsigned int length);
 
 
 #endif /* __STATS_H__ */
