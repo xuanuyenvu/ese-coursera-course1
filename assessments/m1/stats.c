@@ -169,7 +169,7 @@ void merge(unsigned char *array, unsigned int left, unsigned int mid, unsigned i
   unsigned int i = 0, j = 0, k = left;
   while (i < n1 && j < n2)
   {
-    if (L[i] <= R[j])
+    if (L[i] >= R[j])
     {
       array[k] = L[i];
       i++;
