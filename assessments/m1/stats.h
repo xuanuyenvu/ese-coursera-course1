@@ -2,14 +2,14 @@
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
+ * forms is permitted as long as the files maintain this copyright. Users are
  * permitted to modify this and use it to learn about the field of embedded
  * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
+ * misuse of this material.
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
+ * @file <Add File Name>
  * @brief <Add Brief Description Here >
  *
  * <Add Extended Description Here>
@@ -21,8 +21,36 @@
 #ifndef __STATS_H__
 #define __STATS_H__
 
+#include <stdbool.h>
+#include <stddef.h>
+
 /**
- * @brief A function that prints the statistics of 
+ * @brief A function that checks if an array is valid (not NULL and length > 0).
+ * @param array The array of unsigned char values
+ * @param length The length of the array
+ * @return true if the array is valid, false otherwise
+ */
+bool is_valid_array(unsigned char *array, unsigned int length);
+
+/**
+ * @brief A function that performs merge sort on an array.
+ * @param array The array of unsigned char values
+ * @param left The left index of the array
+ * @param right The right index of the array
+ */
+void merge_sort(unsigned char *array, unsigned int left, unsigned int right);
+
+/**
+ * @brief A function that merges two sorted subarrays.
+ * @param array The array of unsigned char values
+ * @param left The left index of the array
+ * @param mid The middle index of the array
+ * @param right The right index of the array
+ */
+void merge(unsigned char *array, unsigned int left, unsigned int mid, unsigned int right);
+
+/**
+ * @brief A function that prints the statistics of
  * an array including minimum, maximum, mean, and median.
  * @param array The array of unsigned char values
  * @param length The length of the array
@@ -74,6 +102,5 @@ unsigned char find_minimum(unsigned char *array, unsigned int length);
  * @param length The length of the array
  */
 void sort_array(unsigned char *array, unsigned int length);
-
 
 #endif /* __STATS_H__ */
