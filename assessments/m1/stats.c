@@ -9,13 +9,17 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name>
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief Implementation file for statistical analysis functions on a byte array
  *
- * <Add Extended Description Here>
+ * This file contains the implementation of functions used to analyze an
+ * array of unsigned char data. It includes functions to calculate the
+ * mean, median, maximum, and minimum of the data set, sort the array in
+ * descending order using merge sort, and print the data and statistics
+ * to the screen in a formatted way.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author VU Nguyen Xuan Uyen
+ * @date 03 August 2026
  *
  */
 
@@ -33,8 +37,12 @@ void main()
                               201, 6, 12, 60, 8, 2, 5, 67,
                               7, 87, 250, 230, 99, 3, 100, 90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  print_array(test, SIZE);
+  print_statistics(test, SIZE);
+
+  printf("\nSorted Array :\n");
+  sort_array(test, SIZE);
+  print_array(test, SIZE);
 }
 
 bool is_valid_array(unsigned char *array, unsigned int length)

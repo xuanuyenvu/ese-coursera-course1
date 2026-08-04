@@ -9,13 +9,16 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name>
- * @brief <Add Brief Description Here >
+ * @file stats.h
+ * @brief Header file for statistical analysis functions on a byte array
  *
- * <Add Extended Description Here>
+ * This header declares a set of functions used to analyze an array of
+ * unsigned char data, including functions to validate the array, find
+ * the mean, median, maximum, and minimum values, sort the array, and
+ * print the array and its statistics to the screen in a formatted way.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author VU Nguyen Xuan Uyen
+ * @date 03 August 2026
  *
  */
 #ifndef __STATS_H__
@@ -23,6 +26,8 @@
 
 #include <stdbool.h>
 #include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * @brief A function that checks if an array is valid (not NULL and length > 0).
