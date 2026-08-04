@@ -28,7 +28,7 @@
 /* Size of the Data Set */
 #define SIZE (40)
 
-void main()
+int main()
 {
 
   unsigned char test[SIZE] = {34, 201, 190, 154, 8, 194, 2, 6,
@@ -43,6 +43,8 @@ void main()
   printf("\nSorted Array :\n");
   sort_array(test, SIZE);
   print_array(test, SIZE);
+
+  return 0;
 }
 
 bool is_valid_array(unsigned char *array, unsigned int length)

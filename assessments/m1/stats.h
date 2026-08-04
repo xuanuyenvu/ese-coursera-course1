@@ -102,7 +102,7 @@ unsigned char find_maximum(unsigned char *array, unsigned int length);
 unsigned char find_minimum(unsigned char *array, unsigned int length);
 
 /**
- * @brief A function that sorts an array in ascending order.
+ * @brief A function that sorts an array in descending order.
  * @param array The array of unsigned char values
  * @param length The length of the array
  */
