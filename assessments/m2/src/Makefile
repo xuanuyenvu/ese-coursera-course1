@@ -15,19 +15,26 @@
 # Use: make [TARGET] [PLATFORM-OVERRIDES]
 #
 # Build Targets:
-#      <Put a description of the supported targets here>
+#      %.i         - preprocessed output (make main.i)
+#      %.asm       - assembly output từng file nguồn (make main.asm)
+#      %.o         - object file, không link (make main.o)
+#      compile-all - compile tất cả object file, không link
+#      build       - compile + link ra c1m2.out
+#      clean       - xoá toàn bộ file build ra
 #
 # Platform Overrides:
-#      <Put a description of the supported Overrides here
+#      PLATFORM=HOST   - build native bằng gcc
+#      PLATFORM=MSP432 - cross-compile bằng arm-none-eabi-gcc
 #
 #------------------------------------------------------------------------------
 include sources.mk
 
 # Platform Overrides
 PLATFORM = HOST
+TARGET = c1m2
 
 # Architectures Specific Flags
-LINKER_FILE = msp432p401r.lds
+LINKER_FILE = ../msp432p401r.lds
 CPU = cortex-m4
 ARCH = armv7e-m
 SPECS = nosys.specs

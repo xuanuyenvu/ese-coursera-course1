@@ -19,9 +19,9 @@ SOURCES = \
 	system_msp432p401r.c
  
 INCLUDES = \
-	-Iinclude/common \
-	-Iinclude/msp432 \
-	-Iinclude/CMSIS
+	-I../include/common \
+	-I../include/msp432 \
+	-../include/CMSIS
  
 else
  
@@ -30,6 +30,6 @@ SOURCES = \
 	memory.c
  
 INCLUDES = \
-	-Iinclude/common
+	-I../include/common
  
 endif
