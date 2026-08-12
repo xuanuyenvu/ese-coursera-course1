@@ -21,7 +21,7 @@ SOURCES = \
 INCLUDES = \
 	-I../include/common \
 	-I../include/msp432 \
-	-../include/CMSIS
+	-I../include/CMSIS
  
 else
  

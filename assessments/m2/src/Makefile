@@ -51,11 +51,11 @@ ifeq ($(PLATFORM),MSP432)
 	             -march=$(ARCH) \
 	             -mfloat-abi=hard \
 	             -mfpu=fpv4-sp-d16 \
-	             --specs=$(SPECS)
+	             --specs=$(SPECS) \
  
-	CFLAGS = -Wall -Werror -g -O0 -std=c99 $(ARCH_FLAGS)
+	CFLAGS = -Wall -Werror -Wno-error=attributes -g -O0 -std=c99 $(ARCH_FLAGS)
 	CPPFLAGS = -DMSP432 $(INCLUDES)
-	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE) $(ARCH_FLAGS)
+	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
  
 else
  
