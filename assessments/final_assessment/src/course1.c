@@ -2,18 +2,18 @@
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
- * forms is permitted as long as the files maintain this copyright. Users are 
+ * forms is permitted as long as the files maintain this copyright. Users are
  * permitted to modify this and use it to learn about the field of embedded
  * software. Alex Fosdick and the University of Colorado are not liable for any
- * misuse of this material. 
+ * misuse of this material.
  *
  *****************************************************************************/
 /**
- * @file course1.c 
+ * @file course1.c
  * @brief This file is to be used to course 1 final assessment.
  *
- * @author Alex Fosdick
- * @date April 2, 2017
+ * @author VU Nguyen Xuan Uyen
+ * @date 13 Aug 2026
  *
  */
 
@@ -24,84 +24,87 @@
 #include "data.h"
 #include "stats.h"
 
-int8_t test_data1() {
-  uint8_t * ptr;
+int8_t test_data1()
+{
+  uint8_t *ptr;
   int32_t num = -4096;
   uint32_t digits;
   int32_t value;
 
   PRINTF("\ntest_data1();\n");
-  ptr = (uint8_t*) reserve_words( DATA_SET_SIZE_W );
+  ptr = (uint8_t *)reserve_words(DATA_SET_SIZE_W);
 
-  if (! ptr )
+  if (!ptr)
   {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_16);   
-  value = my_atoi( ptr, digits, BASE_16);
-  #ifdef VERBOSE
+  digits = my_itoa(num, ptr, BASE_16);
+  value = my_atoi(ptr, digits, BASE_16);
+#ifdef VERBOSE
   PRINTF("  Initial number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
-  #endif
-  free_words( (uint32_t*)ptr );
+#endif
+  free_words((uint32_t *)ptr);
 
-  if ( value != num )
+  if (value != num)
   {
     return TEST_ERROR;
   }
   return TEST_NO_ERROR;
 }
 
-int8_t test_data2() {
-  uint8_t * ptr;
+int8_t test_data2()
+{
+  uint8_t *ptr;
   int32_t num = 123456;
   uint32_t digits;
   int32_t value;
 
   PRINTF("test_data2():\n");
-  ptr = (uint8_t*) reserve_words( DATA_SET_SIZE_W );
+  ptr = (uint8_t *)reserve_words(DATA_SET_SIZE_W);
 
-  if (! ptr )
+  if (!ptr)
   {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_10);
-  value = my_atoi( ptr, digits, BASE_10);
-  #ifdef VERBOSE
+  digits = my_itoa(num, ptr, BASE_10);
+  value = my_atoi(ptr, digits, BASE_10);
+#ifdef VERBOSE
   PRINTF("  Initial Decimal number: %d\n", num);
   PRINTF("  Final Decimal number: %d\n", value);
-  #endif
-  free_words( (uint32_t*)ptr );
+#endif
+  free_words((uint32_t *)ptr);
 
-  if ( value != num )
+  if (value != num)
   {
     return TEST_ERROR;
   }
   return TEST_NO_ERROR;
 }
 
-int8_t test_memmove1() {
+int8_t test_memmove1()
+{
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memmove1() - NO OVERLAP\n");
-  set = (uint8_t*) reserve_words( MEM_SET_SIZE_W );
+  set = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
 
-  if (! set ) 
+  if (!set)
   {
     return TEST_ERROR;
   }
-  
+
   ptra = &set[0];
   ptrb = &set[16];
-  
+
   /* Initialize the set to test values */
-  for( i = 0; i < MEM_SET_SIZE_B; i++)
+  for (i = 0; i < MEM_SET_SIZE_B; i++)
   {
     set[i] = i;
   }
@@ -118,21 +121,22 @@ int8_t test_memmove1() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t *)set);
   return ret;
 }
 
-int8_t test_memmove2() {
+int8_t test_memmove2()
+{
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memmove2() -OVERLAP END OF SRC BEGINNING OF DST\n");
-  set = (uint8_t*) reserve_words(MEM_SET_SIZE_W);
+  set = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
 
-  if (! set )
+  if (!set)
   {
     return TEST_ERROR;
   }
@@ -140,7 +144,8 @@ int8_t test_memmove2() {
   ptrb = &set[8];
 
   /* Initialize the set to test values */
-  for( i = 0; i < MEM_SET_SIZE_B; i++) {
+  for (i = 0; i < MEM_SET_SIZE_B; i++)
+  {
     set[i] = i;
   }
 
@@ -156,21 +161,22 @@ int8_t test_memmove2() {
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t *)set);
   return ret;
 }
 
-int8_t test_memmove3() {
+int8_t test_memmove3()
+{
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memove3() - OVERLAP END OF DEST BEGINNING OF SRC\n");
-  set = (uint8_t*)reserve_words( MEM_SET_SIZE_W);
+  set = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
 
-  if (! set ) 
+  if (!set)
   {
     return TEST_ERROR;
   }
@@ -178,7 +184,7 @@ int8_t test_memmove3() {
   ptrb = &set[0];
 
   /* Initialize the set to test values */
-  for( i = 0; i < MEM_SET_SIZE_B; i++)
+  for (i = 0; i < MEM_SET_SIZE_B; i++)
   {
     set[i] = i;
   }
@@ -195,23 +201,22 @@ int8_t test_memmove3() {
     }
   }
 
-
-  free_words( (uint32_t*)set );
+  free_words((uint32_t *)set);
   return ret;
-
 }
 
-int8_t test_memcopy() {
+int8_t test_memcopy()
+{
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memcopy()\n");
-  set = (uint8_t*) reserve_words(MEM_SET_SIZE_W);
+  set = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
 
-  if (! set ) 
+  if (!set)
   {
     return TEST_ERROR;
   }
@@ -219,7 +224,8 @@ int8_t test_memcopy() {
   ptrb = &set[16];
 
   /* Initialize the set to test values */
-  for( i = 0; i < MEM_SET_SIZE_B; i++) {
+  for (i = 0; i < MEM_SET_SIZE_B; i++)
+  {
     set[i] = i;
   }
 
@@ -229,27 +235,27 @@ int8_t test_memcopy() {
 
   for (i = 0; i < TEST_MEMMOVE_LENGTH; i++)
   {
-    if (set[i+16] != i)
+    if (set[i + 16] != i)
     {
       ret = TEST_ERROR;
     }
   }
 
-  free_words( (uint32_t*)set );
+  free_words((uint32_t *)set);
   return ret;
 }
 
-int8_t test_memset() 
+int8_t test_memset()
 {
   uint8_t i;
   uint8_t ret = TEST_NO_ERROR;
-  uint8_t * set;
-  uint8_t * ptra;
-  uint8_t * ptrb;
+  uint8_t *set;
+  uint8_t *ptra;
+  uint8_t *ptrb;
 
   PRINTF("test_memset()\n");
-  set = (uint8_t*)reserve_words(MEM_SET_SIZE_W);
-  if (! set )
+  set = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
+  if (!set)
   {
     return TEST_ERROR;
   }
@@ -257,7 +263,7 @@ int8_t test_memset()
   ptrb = &set[16];
 
   /* Initialize the set to test values */
-  for( i = 0; i < MEM_SET_SIZE_B; i++) 
+  for (i = 0; i < MEM_SET_SIZE_B; i++)
   {
     set[i] = i;
   }
@@ -267,7 +273,7 @@ int8_t test_memset()
   print_array(set, MEM_SET_SIZE_B);
   my_memzero(ptrb, MEM_ZERO_LENGTH);
   print_array(set, MEM_SET_SIZE_B);
-  
+
   /* Validate Set & Zero Functionality */
   for (i = 0; i < MEM_ZERO_LENGTH; i++)
   {
@@ -280,8 +286,8 @@ int8_t test_memset()
       ret = TEST_ERROR;
     }
   }
-  
-  free_words( (uint32_t*)set );
+
+  free_words((uint32_t *)set);
   return ret;
 }
 
@@ -289,20 +295,19 @@ int8_t test_reverse()
 {
   uint8_t i;
   int8_t ret = TEST_NO_ERROR;
-  uint8_t * copy;
+  uint8_t *copy;
   uint8_t set[MEM_SET_SIZE_B] = {0x3F, 0x73, 0x72, 0x33, 0x54, 0x43, 0x72, 0x26,
                                  0x48, 0x63, 0x20, 0x66, 0x6F, 0x00, 0x20, 0x33,
                                  0x72, 0x75, 0x74, 0x78, 0x21, 0x4D, 0x20, 0x40,
-                                 0x20, 0x24, 0x7C, 0x20, 0x24, 0x69, 0x68, 0x54
-                               };
+                                 0x20, 0x24, 0x7C, 0x20, 0x24, 0x69, 0x68, 0x54};
 
   PRINTF("test_reverse()\n");
-  copy = (uint8_t*)reserve_words(MEM_SET_SIZE_W);
-  if (! copy )
+  copy = (uint8_t *)reserve_words(MEM_SET_SIZE_W);
+  if (!copy)
   {
     return TEST_ERROR;
   }
-  
+
   my_memcopy(set, copy, MEM_SET_SIZE_B);
 
   print_array(set, MEM_SET_SIZE_B);
@@ -317,11 +322,11 @@ int8_t test_reverse()
     }
   }
 
-  free_words( (uint32_t*)copy );
+  free_words((uint32_t *)copy);
   return ret;
 }
 
-void course1(void) 
+void course1(void)
 {
   uint8_t i;
   int8_t failed = 0;
@@ -336,7 +341,7 @@ void course1(void)
   results[6] = test_memset();
   results[7] = test_reverse();
 
-  for ( i = 0; i < TESTCOUNT; i++) 
+  for (i = 0; i < TESTCOUNT; i++)
   {
     failed += results[i];
   }
