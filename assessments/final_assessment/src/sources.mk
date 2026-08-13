@@ -16,6 +16,7 @@ SOURCES = \
 	memory.c \
 	data.c \
 	course1.c \
+	stats.c \
 	interrupts_msp432p401r_gcc.c \
 	startup_msp432p401r_gcc.c \
 	system_msp432p401r.c
@@ -31,7 +32,8 @@ SOURCES = \
 	main.c \
 	memory.c \
 	data.c \
-	course1.c
+	course1.c \
+	stats.c 
  
 INCLUDES = \
 	-I../include/common
